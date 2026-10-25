@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gizlilik Politikası — Şöför Vardiya Takip</title>
+  <title>Gizlilik Politikası — Taksi Kasa</title>
+  <meta name="description" content="Taksi Kasa uygulamasının gizlilik politikası. Geliştirici: Hüseyin Arda Ellibes." />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -15,13 +16,14 @@
     header {
       background: #1E1E1E;
       border-bottom: 3px solid #EF9F27;
-      padding: 24px 20px;
+      padding: 24px 16px;
       text-align: center;
     }
     header h1 {
-      font-size: 22px;
+      font-size: 24px;
       color: #EF9F27;
-      font-weight: 700;
+      font-weight: 800;
+      letter-spacing: 2px;
     }
     header p {
       font-size: 13px;
@@ -31,8 +33,26 @@
     main {
       max-width: 720px;
       margin: 0 auto;
-      padding: 32px 20px 60px;
+      padding: 32px 16px 60px;
     }
+    .ids {
+      width: 100%;
+      border-collapse: collapse;
+      background: #1E1E1E;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 24px;
+      font-size: 14px;
+    }
+    .ids th, .ids td {
+      text-align: left;
+      padding: 10px 14px;
+      border-bottom: 1px solid #2A2A2A;
+      vertical-align: top;
+    }
+    .ids tr:last-child th, .ids tr:last-child td { border-bottom: none; }
+    .ids th { color: #9E9E9E; font-weight: 600; width: 44%; }
+    .ids td { color: #FFFFFF; }
     .intro {
       background: #1E1E1E;
       border-radius: 12px;
@@ -66,6 +86,8 @@
       color: #CCCCCC;
       margin-bottom: 6px;
     }
+    strong { color: #FFFFFF; }
+    code { font-size: 13px; color: #FAC775; }
     .highlight {
       background: #2A2A2A;
       border-left: 3px solid #EF9F27;
@@ -88,6 +110,7 @@
       font-size: 13px;
       color: #F0997B;
     }
+    .en p { color: #9E9E9E; }
     a {
       color: #EF9F27;
       text-decoration: none;
@@ -95,117 +118,155 @@
     a:hover { text-decoration: underline; }
     footer {
       text-align: center;
-      padding: 24px 20px;
+      padding: 24px 16px;
       background: #1E1E1E;
       border-top: 1px solid #333333;
       font-size: 12px;
-      color: #555555;
+      color: #777777;
     }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>Şöför Vardiya Takip</h1>
-  <p>Gizlilik Politikası — Son güncelleme: Temmuz 2026</p>
+  <h1>TAKSİ KASA</h1>
+  <p>Gizlilik Politikası — Yürürlük tarihi: 25 Ekim 2026</p>
 </header>
 
 <main>
+  <table class="ids">
+    <tr><th>Uygulama adı</th><td>Taksi Kasa</td></tr>
+    <tr><th>Paket adı</th><td>com.vardiyatakip.mobile</td></tr>
+    <tr><th>Geliştirici / Veri sorumlusu</th><td>Hüseyin Arda Ellibes</td></tr>
+    <tr><th>İletişim</th><td><a href="mailto:ardaellibes@gmail.com">ardaellibes@gmail.com</a></td></tr>
+  </table>
+
   <div class="intro">
-    Şöför Vardiya Takip uygulaması, ticari araç filolarının vardiya ve gelir
-    takibini kolaylaştırmak amacıyla geliştirilmiştir. Bu gizlilik politikası,
-    uygulamayı kullanırken hangi verilerin toplandığını ve nasıl kullanıldığını
-    açıklar.
+    Bu gizlilik politikası, <strong>Hüseyin Arda Ellibes</strong> tarafından geliştirilen ve
+    Google Play ile App Store'da yayınlanan <strong>Taksi Kasa</strong> mobil uygulaması
+    (paket adı: <code>com.vardiyatakip.mobile</code>) için geçerlidir. Taksi Kasa, taksi ve ticari
+    araç filolarında şoförlerin vardiya raporlarını girmesini, filo sahibinin de raporları, araçları
+    ve kasayı takip etmesini sağlar. Uygulamanın önceki adı "Şoför Vardiya Takip"tir.
   </div>
 
   <section>
     <h2>1. Toplanan Veriler</h2>
-    <p>Uygulama aşağıdaki bilgileri toplar:</p>
     <ul>
-      <li><strong>Hesap bilgileri:</strong> Ad soyad, e-posta adresi</li>
-      <li><strong>Vardiya raporları:</strong> Kilometre, hasılat, yakıt gideri, tarih bilgileri</li>
-      <li><strong>Cihaz bildirimleri:</strong> Push bildirim token'ı (yalnızca izin verilmişse)</li>
+      <li><strong>Hesap bilgileri:</strong> ad soyad, e-posta adresi, şifre (yalnızca Firebase Authentication tarafından güvenli biçimde saklanır, tarafımızca görülemez) ve hesap türü (filo sahibi veya şoför).</li>
+      <li><strong>Filo bilgileri:</strong> filo adı, filo katılım kodu, filoya üye şoförlerin listesi ve şoför-araç eşleştirmeleri.</li>
+      <li><strong>Araç bilgileri:</strong> plaka, bakım ve muayene tarihleri.</li>
+      <li><strong>Vardiya raporları:</strong> tarih, vardiya saatleri, plaka, başlangıç ve bitiş kilometresi; nakit, kart, uygulama ve IBAN ile alınan gelir <em>tutarları</em>; şoför payı, yakıt ve diğer giderler.</li>
+      <li><strong>Teknik veriler:</strong> bildirim gönderebilmek için cihaz bildirim anahtarı (FCM token, yalnızca izin verilirse) ve uygulama çöktüğünde Firebase Crashlytics tarafından toplanan hata kayıtları (cihaz modeli, işletim sistemi ve uygulama sürümü, hata ayrıntısı).</li>
     </ul>
-    <p>Uygulama konum verisi, mikrofon, kamera veya kişiler listesi <strong>toplamaz</strong>.</p>
+    <p>
+      Uygulama <strong>konum, kamera, mikrofon, fotoğraf veya rehber</strong> verisine erişmez.
+      Banka hesap numarası veya IBAN numarası istenmez; "IBAN geliri" yalnızca tutar olarak girilir.
+    </p>
   </section>
 
   <section>
     <h2>2. Verilerin Kullanım Amacı</h2>
     <ul>
-      <li>Vardiya raporlarının filo sahibiyle paylaşılması</li>
-      <li>Aylık ve günlük gelir istatistiklerinin hesaplanması</li>
-      <li>Yeni rapor bildirimlerinin filo sahibine iletilmesi</li>
+      <li>Hesap oluşturma, giriş yapma ve e-posta doğrulama</li>
+      <li>Şoförlerin girdiği vardiya raporlarının bağlı oldukları filo sahibine iletilmesi</li>
+      <li>Gelir, gider, kilometre ve yakıt istatistiklerinin hesaplanması</li>
+      <li>Yeni rapor, bakım ve muayene bildirimlerinin gönderilmesi</li>
+      <li>Hataların tespit edilip giderilmesi</li>
     </ul>
+    <p>Veriler reklam, profil çıkarma veya pazarlama amacıyla kullanılmaz.</p>
   </section>
 
   <section>
-    <h2>3. Veri Saklama ve Güvenlik</h2>
-    <p>
-      Tüm veriler Google Firebase altyapısında saklanmaktadır. Firebase,
-      endüstri standardı güvenlik önlemleri kullanır. Verilerinize yalnızca
-      ait olduğunuz filo içindeki kullanıcılar ve filo sahibi erişebilir.
-      Veriler üçüncü taraflarla paylaşılmaz veya satılmaz.
-    </p>
-  </section>
-
-  <section>
-    <h2>4. Üçüncü Taraf Hizmetler</h2>
-    <p>Uygulama aşağıdaki üçüncü taraf hizmetleri kullanır:</p>
+    <h2>3. Verilerin Paylaşımı</h2>
     <ul>
-      <li><strong>Google Firebase</strong> — Kimlik doğrulama, veritabanı, bildirimler</li>
-      <li><strong>Firebase Crashlytics</strong> — Anonim hata raporlaması</li>
+      <li><strong>Filo içinde:</strong> Şoförün girdiği raporları ve şoför bilgilerini yalnızca bağlı olduğu filonun sahibi görür. Şoförler diğer şoförlerin verilerini göremez.</li>
+      <li><strong>Hizmet sağlayıcı:</strong> Veriler Google LLC'nin <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase</a> hizmetlerinde (Authentication, Cloud Firestore, Cloud Functions, Cloud Messaging, Crashlytics) saklanır ve işlenir. Bu nedenle veriler yurt dışındaki sunucularda tutulabilir.</li>
+      <li><strong>Kullanıcının kendi paylaşımı:</strong> Şoför bir raporu WhatsApp ile göndermeyi seçerse, rapor metni kendi WhatsApp uygulaması üzerinden paylaşılır.</li>
     </ul>
+    <p>Veriler üçüncü taraflara <strong>satılmaz, kiralanmaz veya reklam amacıyla aktarılmaz</strong>.</p>
   </section>
 
   <section>
-    <h2>5. Verilerinizi Silme</h2>
+    <h2>4. Saklama ve Güvenlik</h2>
     <p>
-      Hesabınızı ve tüm verilerinizi doğrudan uygulama içinden kalıcı
-      olarak silebilirsiniz:
+      Tüm veri aktarımları şifreli bağlantı (HTTPS/TLS) üzerinden yapılır. Veritabanı erişim kuralları,
+      her kullanıcının yalnızca kendi filosuna ait verilere erişebilmesini sağlar. Veriler, hesap
+      silinene veya silme talebi yerine getirilene kadar saklanır.
     </p>
+  </section>
+
+  <section id="hesap-silme">
+    <h2>5. Hesap ve Veri Silme</h2>
+    <p>Hesabınızı doğrudan uygulama içinden kalıcı olarak silebilirsiniz:</p>
     <div class="highlight">
       <ol>
-        <li>Uygulamayı açın ve giriş yapın</li>
-        <li>Sağ üst köşedeki ⋮ (üç nokta) menüsüne tıklayın</li>
+        <li>Taksi Kasa uygulamasını açın ve giriş yapın</li>
+        <li>Sağ üst köşedeki ⋮ (üç nokta) menüsüne dokunun</li>
         <li>"Hesabı Sil" seçeneğini seçin</li>
-        <li>Onay ekranında "Hesabı Sil" butonuna basın</li>
+        <li>Şifrenizi girip "Hesabı Sil" butonuna basın</li>
       </ol>
     </div>
     <div class="warning">
-      ⚠️ Hesabınız ve tüm ilişkili verileriniz anında ve kalıcı olarak
-      silinecektir. Bu işlem geri alınamaz.
+      ⚠️ Giriş hesabınız ve profil bilgileriniz anında ve kalıcı olarak silinir. Bu işlem geri alınamaz.
+      Filo sahibi hesabı silindiğinde filo kodu da kaldırılır.
     </div>
     <p style="margin-top:12px;">
-      Yardım için: <a href="mailto:ardaellibes@gmail.com">ardaellibes@gmail.com</a>
+      Daha önce girilmiş vardiya raporları filonun işletme kaydı olduğu için hesap silindiğinde otomatik
+      olarak silinmez. Raporların ve filoya ait diğer tüm verilerin silinmesini istiyorsanız hesabınıza
+      kayıtlı e-posta adresinden <a href="mailto:ardaellibes@gmail.com">ardaellibes@gmail.com</a>
+      adresine yazın; talebiniz en geç 30 gün içinde yerine getirilir.
     </p>
   </section>
 
   <section>
-    <h2>6. Çocukların Gizliliği</h2>
+    <h2>6. Haklarınız</h2>
     <p>
-      Uygulama 13 yaş altı kullanıcılara yönelik değildir ve bu yaş
-      grubundan bilerek veri toplanmaz.
+      6698 sayılı Kişisel Verilerin Korunması Kanunu'nun 11. maddesi kapsamında; verilerinizin işlenip
+      işlenmediğini öğrenme, bilgi talep etme, düzeltilmesini veya silinmesini isteme ve işlemeye itiraz
+      etme haklarına sahipsiniz. Taleplerinizi yukarıdaki e-posta adresine iletebilirsiniz.
     </p>
   </section>
 
   <section>
-    <h2>7. Politika Değişiklikleri</h2>
+    <h2>7. Çocukların Gizliliği</h2>
     <p>
-      Bu politika zaman zaman güncellenebilir. Değişiklikler bu sayfada
-      yayınlanacaktır. Uygulamayı kullanmaya devam etmeniz değişiklikleri
-      kabul ettiğiniz anlamına gelir.
+      Taksi Kasa iş amaçlı bir uygulamadır ve 18 yaş altındaki kişilere yönelik değildir.
+      Bu yaş grubundan bilerek veri toplanmaz.
     </p>
   </section>
 
   <section>
-    <h2>8. İletişim</h2>
-    <p>Gizlilik ile ilgili sorularınız için:</p>
+    <h2>8. Politika Değişiklikleri</h2>
+    <p>
+      Bu politika güncellenebilir. Güncel sürüm her zaman bu sayfada yayınlanır ve yürürlük tarihi
+      sayfanın başında belirtilir.
+    </p>
+  </section>
+
+  <section>
+    <h2>9. İletişim</h2>
+    <p>Hüseyin Arda Ellibes — Taksi Kasa</p>
     <p><a href="mailto:ardaellibes@gmail.com">ardaellibes@gmail.com</a></p>
+  </section>
+
+  <section class="en" lang="en">
+    <h2>Summary in English</h2>
+    <p>
+      This privacy policy applies to the <strong>Taksi Kasa</strong> mobile app
+      (package <code>com.vardiyatakip.mobile</code>), developed by <strong>Hüseyin Arda Ellibes</strong>.
+      The app collects account details (name, email), fleet and vehicle details (plate numbers,
+      maintenance dates), shift reports (mileage, revenue amounts, expenses), a push notification token
+      and crash logs. It does not access location, camera, microphone, photos or contacts. Data is stored
+      on Google Firebase, is visible only to the fleet owner the driver belongs to, and is never sold or
+      used for advertising. Users can delete their account in the app (⋮ menu → "Hesabı Sil"), or request
+      deletion of all fleet data by emailing <a href="mailto:ardaellibes@gmail.com">ardaellibes@gmail.com</a>;
+      requests are handled within 30 days.
+    </p>
   </section>
 </main>
 
 <footer>
-  © 2026 Şöför Vardiya Takip — Tüm hakları saklıdır.
+  © 2026 Taksi Kasa — Hüseyin Arda Ellibes
 </footer>
 
 </body>
