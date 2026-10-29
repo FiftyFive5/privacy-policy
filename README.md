@@ -1,7 +1,7 @@
 # Taksi Kasa — Gizlilik Politikası
 
 Taksi Kasa (com.vardiyatakip.mobile) uygulamasının gizlilik politikası.
-Geliştirici: Hüseyin Arda Ellibes
+Geliştirici: DJMA (Hüseyin Arda Ellibeş)
 
 Yayın adresi: https://fiftyfive5.github.io/privacy-policy/
 
